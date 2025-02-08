@@ -1,0 +1,147 @@
+@using System.Collections.Generic
+@using Microsoft.AspNetCore.Http
+@using Microsoft.AspNetCore.Authentication
+@model LoginViewModel
+@inject SignInManager<AppUser> SignInManager
+
+@{
+    ViewData["cssFile"] = "login";
+    ViewData["Title"] = "Log in";
+}
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <div class="login100-form ">
+                <span class="login100-form-title p-b-43">
+                    <h2 class="login-title">Login</h2>
+                    <p class="welcome-back">Welcome back.</p>
+                </span>
+
+                <form class="d-flex justify-content-between" asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" role="form" method="post">
+                    <button class="btn-face m-b-20" type="submit" name="provider" value="Facebook">
+                        <i class="fa fa-facebook-official"></i>
+                        Facebook
+                    </button>
+                    <button class="btn-google m-b-20" type="submit" name="provider" value="Google">
+                        <img src="~/images/icons/icon-google.png" alt="GOOGLE">
+                        Google
+                    </button>
+                </form>
+
+                <span class="d-block text-center my-2 text-muted">&mdash; or &mdash;</span>
+
+                <form class="validate-form" asp-controller="Account" asp-action="Login" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+
+                    <div class="fw-light fs-14 text-danger text-center my-2" asp-validation-summary="All"></div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                        <input class="input100" asp-for="Email">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Email</span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Password is required">
+                        <input class="input100" asp-for="Password">
+                        <span class="focus-input100"></span>
+                        <span class="label-input100">Password</span>
+                    </div>
+
+                    <div class="flex-sb-m w-full p-t-3 p-b-32">
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" asp-for="RememberMe" />
+                            <label asp-for="RememberMe" class="label-checkbox100">
+                            </label>
+                        </div>
+
+                        <div>
+                            <a asp-action="ForgotPassword" class="txt1">
+                                Forgot Password?
+                            </a>
+                        </div>
+                    </div>
+
+
+                    @*                 <div class="col-md-offset-2 col-md-10">
+                    <div class="checkbox">
+                    <label asp-for="RememberMe">
+                    <input asp-for="RememberMe" />
+                    @Html.DisplayNameFor(m => m.RememberMe)
+                    </label>
+                    </div>
+                    </div> *@
+
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn" type="submit">
+                            Login
+                        </button>
+                    </div>
+
+                </form>
+
+                <div class="text-center p-t-46 p-b-20">
+                    <span class="txt2">
+                        <span class="text-muted">
+                            Not a member ?
+                            <a asp-action="Register" asp-controller="Account" asp-route-returnurl="@ViewData["ReturnUrl"]" asp-area="">SignUp</a>
+                        </span><br>
+                        or sign up using
+                    </span>
+                </div>
+
+                <form class="login100-form-social flex-c-m" asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" role="form" method="post">
+                    <button class="login100-form-social-item flex-c-m bg1 m-r-5" type="submit" name="provider" value="Facebook">
+                        <i class="fa fa-facebook-f" aria-hidden="true"></i>
+                    </button>
+                    <button class="login100-form-social-item flex-c-m bg1 m-r-5" type="submit" name="provider" value="Google">
+                        <i class="fa fa-google" aria-hidden="true"></i>
+                    </button>
+                    <button class="login100-form-social-item flex-c-m bg1 m-r-5" type="submit" name="provider" value="Microsoft">
+                        <i class="fa fa-windows" aria-hidden="true"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@* <section>
+    @{
+        var schemes = await SignInManager.GetExternalAuthenticationSchemesAsync();
+        var loginProviders = schemes.ToList();
+        if (loginProviders.Count == 0)
+        {
+            <div>
+                <p>
+                    There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                    for details on setting up this ASP.NET application to support logging in via external services.
+                </p>
+            </div>
+        }
+        else
+        {
+            <form asp-controller="Account" asp-action="ExternalLogin" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-horizontal" role="form">
+                <div>
+                    <p>
+                        @foreach (var provider in loginProviders)
+                        {
+                            <button type="submit" class="btn btn-default" name="provider" value="@provider.Name" title="Log in using your @provider.Name account">@provider.Name</button>
+                        }
+                    </p>
+                </div>
+            </form>
+        }
+    }
+</section> *@
+
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
