@@ -146,16 +146,10 @@ Feel free to submit **Pull Requests** or open an **Issue** if you find any bugs 
 
 ---
 
-## 🛡 **License**
-
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for more details.
-
----
-
 ## 📩 **Contact**
 
-For questions or suggestions, feel free to reach out via: 📞 **Email:** `your-email@example.com`\
-🐦 **Twitter:** [@yourhandle](https://twitter.com/yourhandle)\
+For questions or suggestions, feel free to reach out via: 
+📞 **Email:** `omarabubrayo6@gmail.com`\
 🌐 **GitHub:** [Omar-Khc](https://github.com/Omar-Khc)
 
 ---
